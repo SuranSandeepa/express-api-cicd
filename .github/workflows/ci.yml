@@ -2,24 +2,27 @@ name: Node.js CI
 
 on:
   push:
-    branches:
+    branches: 
       - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v3  # Updated to the latest version
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3  # Updated to the latest version
         with:
-          node-version: '16'
+          node-version: '18'  # Specify the Node.js version you want
 
       - name: Install dependencies
         run: npm install
 
       - name: Run tests
-        run: npm test
+        run: npm test  # Optional: If you have tests, otherwise skip this step
+
+      - name: Build
+        run: npm run build  # Optional: Only if you have a build script
